@@ -1,0 +1,42 @@
+import mongoose from 'mongoose';
+
+const PatientSchema = new mongoose.Schema({
+    name: String,
+    age: Number,
+    gender: String,
+    contact: String,
+    address: String,
+    guardian: String,
+    opdNumber: { type: String, unique: true, sparse: true },
+    photo: { type: String, default: "" },          // base64 data URL
+    doctor: { type: mongoose.Schema.Types.ObjectId, ref: 'Doctor' },
+    discount: Number,
+    finalFee: Number,
+    abhaNumber: String,
+    abhaAddress: String,
+    mrid: String,
+    pro: String,
+    allergy: String,
+    visitValidity: String,
+    priority: String,
+    caseType: String,
+    sittingLocation: String,
+    religion: String,
+    maritalStatus: String,
+    dob: Date,
+    city: String,
+    area: String,
+    nationality: String,
+    patientClass: String,
+    referredBy: String,
+    complaints: String,
+    empanelment: String,
+    cashPatient: Boolean,
+    appointmentBioReceipt: String,
+    registrationNo: String,
+    registrationType: String,
+    consultant: String,
+    department: String,
+}, { timestamps: { createdAt: 'creationDate', updatedAt: 'lastUpdated' } });
+
+export default mongoose.models.Patient || mongoose.model('Patient', PatientSchema);
